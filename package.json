@@ -1,0 +1,33 @@
+{
+  "name": "serverless-api-template",
+  "version": "1.0.0",
+  "description": "A CI/CD template for building and deploying serverless APIs using Jenkins Pipeline.",
+  "main": "index.js",
+  "dependencies": {
+    "co": "^4.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebeatlecoder/serverless-api-template.git"
+  },
+  "keywords": [
+    "serverless",
+    "api",
+    "template",
+    "lambda",
+    "jenkins",
+    "ci",
+    "cd",
+    "pipeline",
+    "docker"
+  ],
+  "author": "Scott Smethurst",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thebeatlecoder/serverless-api-template/issues"
+  },
+  "homepage": "https://github.com/thebeatlecoder/serverless-api-template#readme"
+}

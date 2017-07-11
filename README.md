@@ -22,6 +22,7 @@ do something similar.
 
 ## Future additions?
 
+* ESLint configuration and pipeline step.
 * Add sample unit, integration and acceptance tests to the project.
 * Come up with a strategy for excluding unused dependencies when deploying Lambdas.
 * Include code for downloading internal packages from a private NPM registry.
