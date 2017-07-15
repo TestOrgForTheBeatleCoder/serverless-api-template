@@ -1,5 +1,8 @@
 FROM node:6.10
 
+RUN useradd jenkins --shell /bin/bash --create-home
+USER jenkins
+
 # AWS-CLI
 RUN apt-get update && apt-get install -y --no-install-recommends \
         python \
@@ -19,6 +22,3 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY . /usr/src/app
-
-RUN useradd jenkins --shell /bin/bash --create-home
-USER jenkins
