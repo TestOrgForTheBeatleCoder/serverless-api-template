@@ -7,7 +7,7 @@ node {
 
       stage 'Test serverless install'
         sh 'serverless --help'
-
+    }
   stage "Cleanup"
     deleteDir()
 }
