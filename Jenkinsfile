@@ -4,15 +4,11 @@ node {
     def environment  = docker.build 'jenkins-container'
 
     environment.inside {
-      stage 'Install dependencies'
-        sh 'npm install'
+      stage 'List directory'
+        sh 'ls'
 
-      stage 'Unit test'
-        sh 'serverless --help'
-
-      stage 'Integration test'
-        sh 'serverless deploy --stage dev'
-        sh 'serverless invoke --stage dev --function hello'
+      stage 'Get directory path'
+        sh 'echo $PWD'
       }
 
   stage "Cleanup"
