@@ -20,5 +20,8 @@ WORKDIR /usr/src/app
 
 COPY . /usr/src/app
 
+RUN npm install
 #RUN useradd jenkins --shell /bin/bash --create-home
 #USER jenkins
+
+#RUN sudo chown -R $USER:$GROUP ~/.npm
