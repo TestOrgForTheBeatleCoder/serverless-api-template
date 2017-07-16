@@ -8,7 +8,7 @@ node {
         sh 'serverless --help'
       }
         
-      stage 'Integration test' {
+      stage ('Integration test') {
         sh 'serverless deploy --stage dev'
         sh 'serverless invoke --stage dev --function hello'
       }
