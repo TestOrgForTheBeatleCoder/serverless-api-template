@@ -1,5 +1,5 @@
 node {
-  stage 'Prepare environment'
+  stage ('Prepare environment') {
     checkout scm
     def environment  = docker.build 'jenkins-container'
 
@@ -14,6 +14,13 @@ node {
       }
     }
 
-  stage "Cleanup"
+  stage ("Cleanup") {
     deleteDir()
+  }
+
+  environment {
+	 		AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+			AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+	 }
+  }
 }
