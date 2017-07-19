@@ -20,8 +20,9 @@ WORKDIR /usr/src/app
 
 COPY . /usr/src/app
 
-RUN npm install
+
+# Note npm install works in the container but not from the Jenkinsfile for some reason...
+#RUN npm install
+
 #RUN useradd jenkins --shell /bin/bash --create-home
 #USER jenkins
-
-#RUN sudo chown -R $USER:$GROUP ~/.npm
