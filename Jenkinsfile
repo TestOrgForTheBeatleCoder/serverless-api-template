@@ -21,7 +21,7 @@ node {
       stage ('Integration test') {
         withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
           // also fails on folder permissions but for '.aws' when not running as root
-          sh 'serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY'
+          //sh 'serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY'
           sh 'serverless deploy --stage dev'
           //sh 'serverless invoke --stage dev --function hello'
         }
@@ -30,7 +30,7 @@ node {
   }
 
   // fails with AccessDeniedException
-  stage ('Cleanup') {
-    deleteDir()
-  }
+  //stage ('Cleanup') {
+  //  deleteDir()
+  //}
 }
