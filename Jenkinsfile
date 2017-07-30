@@ -5,24 +5,20 @@ node {
       echo "aws id: $AWS_ACCESS_KEY_ID"
     }
 
-    //withCredentials([usernamePassword(credentialsId: 'amazon', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-    //  sh 'echo $PASSWORD'
-    //  echo "aws username: $USERNAME"
-    //}
-
     checkout scm
     def environment  = docker.build 'jenkins-container'
 
     environment.inside {
-      stage ('Install dependencies') {
-        sh 'npm install'
-      }
+      //stage ('Install dependencies') {
+      //  sh 'npm install'
+      //}
         
       stage ('Unit test') {
         sh 'serverless --help'
       }
         
       stage ('Integration test') {
+        sh 'serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY'
         sh 'serverless deploy --stage dev'
         sh 'serverless invoke --stage dev --function hello'
       }
