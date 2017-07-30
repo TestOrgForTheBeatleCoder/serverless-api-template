@@ -11,6 +11,7 @@ node {
       //}
         
       stage ('Unit test') {
+        sh 'the current user is $USER'
         sh 'serverless --help'
       }
         
