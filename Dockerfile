@@ -11,7 +11,8 @@ RUN curl -o /tmp/get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
     && pip install awscli \
     && rm /tmp/get-pip.py
 
-# TODO: upgrade to the latest npm which supports package-lock.json
+# Upgrade to the latest version of npm, which supports package-lock.json
+#RUN npm install npm@latest -g
 
 # Install Serverless globally
-RUN npm install serverless@1.8.x -g --silent
+RUN npm install serverless@1.17.x -g --silent
