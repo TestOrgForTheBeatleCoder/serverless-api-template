@@ -1,9 +1,6 @@
 node {
   stage ('Prepare environment') {
-    withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
-      sh 'echo aws key $AWS_SECRET_ACCESS_KEY'
-      echo "aws id: $AWS_ACCESS_KEY_ID"
-    }
+    
 
     checkout scm
     def environment  = docker.build 'jenkins-container'
@@ -18,9 +15,11 @@ node {
       }
         
       stage ('Integration test') {
-        sh 'serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY'
-        sh 'serverless deploy --stage dev'
-        sh 'serverless invoke --stage dev --function hello'
+        withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
+          sh 'serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY'
+          sh 'serverless deploy --stage dev'
+          sh 'serverless invoke --stage dev --function hello'
+        }
       }
     }
   }
