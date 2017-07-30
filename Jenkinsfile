@@ -3,14 +3,14 @@ node {
     checkout scm
     def environment  = docker.build 'jenkins-container'
 
-    environment.inside {
+    environment.inside('-u root') {
       stage ('Install dependencies') {
         sh 'echo current directory is $PWD'
         sh 'echo current user is $USER'
         sh 'ls'
         sh 'serverless --help'
         //Error: EACCES: permission denied, mkdir '/.npm'
-        //sh 'npm install'
+        sh 'npm install'
       }
         
       stage ('Unit test') {
