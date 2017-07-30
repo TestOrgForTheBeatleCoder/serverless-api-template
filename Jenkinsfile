@@ -1,5 +1,10 @@
 node {
-  stage 'Prepare environment'
+  stage 'Prepare environment' {
+    withCredentials([usernamePassword(credentialsId: 'amazon', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+      sh 'echo $PASSWORD'
+      echo "aws username: $USERNAME"
+    }
+
     checkout scm
     def environment  = docker.build 'jenkins-container'
 
@@ -17,7 +22,9 @@ node {
         sh 'serverless invoke --stage dev --function hello'
       }
     }
+  }
 
-  stage "Cleanup"
+  stage "Cleanup" {
     deleteDir()
+  }
 }
