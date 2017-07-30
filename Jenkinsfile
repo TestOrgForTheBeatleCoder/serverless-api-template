@@ -23,7 +23,7 @@ node {
           // also fails on folder permissions but for '.aws' when not running as root
           sh 'serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY'
           sh 'serverless deploy --stage dev'
-          sh 'serverless invoke --stage dev --function hello'
+          //sh 'serverless invoke --stage dev --function hello'
         }
       }
     }
