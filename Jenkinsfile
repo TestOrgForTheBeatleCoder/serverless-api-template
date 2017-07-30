@@ -1,5 +1,5 @@
 node {
-  stage 'Prepare environment' {
+  stage ('Prepare environment') {
     withCredentials([usernamePassword(credentialsId: 'amazon', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
       sh 'echo $PASSWORD'
       echo "aws username: $USERNAME"
@@ -17,14 +17,14 @@ node {
         sh 'serverless --help'
       }
         
-      stage 'Integration test' {
+      stage ('Integration test') {
         sh 'serverless deploy --stage dev'
         sh 'serverless invoke --stage dev --function hello'
       }
     }
   }
 
-  stage "Cleanup" {
+  stage ('Cleanup') {
     deleteDir()
   }
 }
