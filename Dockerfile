@@ -23,5 +23,7 @@ COPY . /usr/src/app
 
 # Note npm install works in the container but not from the Jenkinsfile for some reason...
 RUN npm install
+
+RUN chmod -R 700 /home/ubuntu/.aws
 #RUN useradd jenkins --shell /bin/bash --create-home
 #USER jenkins
