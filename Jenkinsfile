@@ -1,9 +1,9 @@
 node {
   stage ('Prepare environment') {
-    withCredentials([usernamePassword(credentialsId: 'amazon', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-      sh 'echo $PASSWORD'
-      echo "aws username: $USERNAME"
-    }
+    //withCredentials([usernamePassword(credentialsId: 'amazon', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+    //  sh 'echo $PASSWORD'
+    //  echo "aws username: $USERNAME"
+    //}
 
     checkout scm
     def environment  = docker.build 'jenkins-container'
