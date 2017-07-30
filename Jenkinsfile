@@ -1,14 +1,12 @@
 node {
   stage ('Prepare environment') {
-    
-
     checkout scm
     def environment  = docker.build 'jenkins-container'
 
     environment.inside {
-      //stage ('Install dependencies') {
-      //  sh 'npm install'
-      //}
+      stage ('Install dependencies') {
+        sh 'npm install'
+      }
         
       stage ('Unit test') {
         sh 'serverless --help'
