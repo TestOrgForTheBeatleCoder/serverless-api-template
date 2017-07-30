@@ -14,11 +14,10 @@ RUN curl -o /tmp/get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
 # Install Serverless globally
 RUN npm install serverless@1.8.x -g --silent
 
+# TODO: upgrade npm?
+
 # Copy source to container
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+#RUN mkdir -p /usr/src/app
+#WORKDIR /usr/src/app
 
-COPY . /usr/src/app
-
-# Note npm install works in the container but not from the Jenkinsfile for some reason...
-#RUN npm install
+#COPY . /usr/src/app
