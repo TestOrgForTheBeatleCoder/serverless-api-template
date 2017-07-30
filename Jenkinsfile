@@ -7,11 +7,6 @@ node {
       stage ('Install dependencies') {
         //Error: EACCES: permission denied, mkdir '/.npm' when not running as root
         sh 'npm install'
-
-        sh 'echo current directory is $PWD'
-        sh 'echo current user is $USER'
-        sh 'ls'
-        sh 'serverless --help'
       }
         
       stage ('Unit test') {
@@ -20,9 +15,10 @@ node {
         
       stage ('Integration test') {
         withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
-          // also fails on folder permissions but for '.aws' when not running as root
-          //sh 'serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY'
+          // also fails on '.aws' folder permissions when not running as root
           sh 'serverless deploy --stage dev'
+
+          // this hangs
           //sh 'serverless invoke --stage dev --function hello'
         }
       }
@@ -30,7 +26,7 @@ node {
   }
 
   // fails with AccessDeniedException
-  stage ('Cleanup') {
-    deleteDir()
-  }
+  //stage ('Cleanup') {
+  //  deleteDir()
+ // }
 }

@@ -31,9 +31,11 @@ Without this install, I was getting 'Docker: not found' errors.
 
 ## Permissions
 
-Granted full control over the Jenkins workspace
+I tried granting control over the Jenkins workspace
 
 ```
 cd /var/lib/jenkins
 sudo chmod -R 777 ./workspace
 ```
+
+but this does not work for the new folders that are created

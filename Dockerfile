@@ -15,5 +15,3 @@ RUN curl -o /tmp/get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
 
 # Install Serverless globally
 RUN npm install serverless@1.8.x -g --silent
-
-#RUN npm install
