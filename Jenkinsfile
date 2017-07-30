@@ -30,7 +30,7 @@ node {
   }
 
   // fails with AccessDeniedException
-  //stage ('Cleanup') {
-  //  deleteDir()
-  //}
+  stage ('Cleanup') {
+    deleteDir()
+  }
 }

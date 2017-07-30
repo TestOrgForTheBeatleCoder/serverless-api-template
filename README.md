@@ -27,3 +27,13 @@ sudo service jenkins restart
 ```
 
 Without this install, I was getting 'Docker: not found' errors.
+
+
+## Permissions
+
+Granted full control over the Jenkins workspace
+
+```
+cd /var/lib/jenkins
+sudo chmod -R 777 ./workspace
+```
