@@ -14,10 +14,10 @@ RUN curl -o /tmp/get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
 # Install Serverless globally
 RUN npm install serverless@1.8.x -g --silent
 
-# TODO: upgrade npm?
+# TODO: upgrade to the latest npm which supports package-lock.json
 
-# Copy source to container
-#RUN mkdir -p /usr/src/app
-#WORKDIR /usr/src/app
+RUN mkdir /home/ubuntu/.npm/
+RUN chown ubuntu:ubuntu -RW /home/ubuntu/.npm
 
-#COPY . /usr/src/app
+RUN mkdir /home/ubuntu/.aws/
+RUN chown ubuntu:ubuntu -RW /home/ubuntu/.aws
