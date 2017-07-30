@@ -8,8 +8,9 @@ node {
         sh 'echo current directory is $PWD'
         sh 'echo current user is $USER'
         sh 'ls'
+        sh 'serverless --help'
         //Error: EACCES: permission denied, mkdir '/.npm'
-        sh 'npm install'
+        //sh 'npm install'
       }
         
       stage ('Unit test') {
