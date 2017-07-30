@@ -5,6 +5,8 @@ node {
 
     environment.inside {
       stage ('Install dependencies') {
+        sh 'echo current directory is $PWD'
+        sh 'echo current user is $USER'
         //Error: EACCES: permission denied, mkdir '/.npm'
         sh 'npm install'
       }
