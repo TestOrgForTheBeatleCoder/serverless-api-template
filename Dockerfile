@@ -12,7 +12,11 @@ RUN curl -o /tmp/get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
     && rm /tmp/get-pip.py
 
 # Upgrade to the latest version of npm, which supports package-lock.json
-#RUN npm install npm@latest -g
+RUN npm install npm@5.3.0 -g
+
+RUN npm cache clean
+
+RUN npm install
 
 # Install Serverless globally
-RUN npm install serverless -g --silent
+#RUN npm install serverless -g --silent
