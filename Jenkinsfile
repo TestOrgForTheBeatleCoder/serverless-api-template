@@ -3,7 +3,8 @@ pipeline {
 
   stages {
     stage('Install dependecies') {
-      steps {				
+      steps {
+        sh 'whoami'	
         sh 'npm install'
       }
     }			
