@@ -39,3 +39,18 @@ sudo chmod -R 777 ./workspace
 ```
 
 but this does not work for the new folders that are created
+
+
+## Installing the required versions of node.js and npm using nvm
+
+```
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+```
+
+Then restart the terminal and type:
+
+
+```
+nvm install v6.10.2
+npm install npm@latest -g
+```

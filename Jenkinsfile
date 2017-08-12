@@ -2,6 +2,12 @@ pipeline {
   agent any	 
 
   stages {
+    stage('Install dependecies') {
+      steps {				
+        sh 'npm install'
+      }
+    }			
+
     stage('Unit test') {
       steps {				
         sh 'serverless --help' // to ensure it is installed
